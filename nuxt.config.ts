@@ -3,6 +3,11 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/content'
   ],
+    content:{
+        preview: {
+            api: 'https://api.nuxt.studio',
+        }
+    },
   css: [
     '~/assets/css/main.css',
   ],
