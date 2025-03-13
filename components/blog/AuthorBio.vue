@@ -6,7 +6,7 @@
             </div>
             <div class="ml-4">
                 <p class="font-mono font-bold mb-1" :style="{ color: colors.darkGray }">
-                    Written by {{ author }}
+                    Written by <slot name="author"/>
                 </p>
                 <p class="text-sm mb-3" :style="{ color: colors.mediumGray }">
                     {{ authorTitle }}

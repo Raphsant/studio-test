@@ -85,8 +85,8 @@
         </div>
 
         <BlogHeader />
-        <BlogArticleHeader />
-        <BlogArticleContent />
+        <ContentRenderer v-if="home" :value="home" />
+        <div v-else>Home not found</div>
         <NewsletterCTA />
         <AppFooter />
     </div>
@@ -101,11 +101,12 @@ import BlogHeader from '~/components/blog/BlogHeader.vue'
 import BlogArticleHeader from '~/components/blog/BlogArticleHeader.vue'
 import BlogArticleContent from '~/components/blog/BlogArticleContent.vue'
 import NewsletterCTA from '~/components/blog/NewsletterCTA.vue'
+const route = useRoute()
+const { data: home } = await useAsyncData(route.path, () => {
+  return queryCollection('content').path(route.path).first()
+})
 
 const isMenuOpen = ref(false)
-const route = useRoute()
-const slug = route.params.slug
-
 const colors = reactive({
     yellow: '#E8C547',
     darkGray: '#30323D',
